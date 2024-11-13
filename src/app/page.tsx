@@ -14,7 +14,7 @@ export default function Home() {
       </div>
 
       {/* Navbar */}
-      <nav className="w-full py-4 px-8 shadow-md flex justify-between items-center bg-purple-800/80 backdrop-blur-md fixed top-0 z-50">
+      <nav className="w-full py-4 px-8 shadow-md flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 fixed top-0 z-50 transition-all duration-500">
         <h1 className="text-2xl font-bold tracking-wide">Proxima</h1>
         <ul className="flex gap-8 text-lg">
           <li className="hover:text-purple-300 transition-all duration-300">
@@ -41,20 +41,24 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col items-center justify-center text-center w-full px-8 py-16 mt-32 mb-10 gap-8 leading-relaxed">
+      <main className="flex-grow flex flex-col items-center justify-center text-center w-full px-8 py-16 mt-32 mb-10 gap-12 leading-relaxed">
         {/* Intro Section */}
-        <section className="max-w-3xl space-y-6 animate-fadeIn transition-all duration-500">
-          <h2 className="text-5xl font-semibold text-purple-800 animate-bounce mb-4">
-            No More Solo Job Hunting
-          </h2>
-          <h3 className="text-3xl font-bold text-purple-700 mb-6">
-            " Your path to a standout resume "
-          </h3>
-          <p className="text-xl text-gray-800 mb-6 animate-slideUp transition-opacity duration-700 ease-in-out">
-            Your one-stop solution for Resume Analysis, Personalized Job Suggestions, and Detailed Scoring!
-          </p>
-          <p className="text-lg text-gray-700 mb-6 animate-slideUp transition-opacity duration-700 ease-in-out">
-            Proxima evaluates your resume's structure, keywords, and formatting, giving you insightful feedback to help you stand out. Not only that, but it also provides job recommendations tailored to your profile. Whether you’re just starting or aiming for a senior role, Proxima is here to guide you.
+        <section className="relative max-w-3xl mx-auto p-8 mb-12">
+  <h2 className="text-5xl font-bold text-purple-700 mb-6 animate-bounce">
+    No More Solo Job Hunting
+  </h2>
+  <h3 className="text-3xl font-semibold text-gray-700 mb-6">
+    Your path to a standout resume
+  </h3>
+
+  {/* Styled Text Box with Animations */}
+  <div className="p-6 mb-8 bg-gradient-to-br from-purple-500 via-purple-400 to-purple-600 shadow-lg rounded-lg border border-purple-300 animate-boxFadeIn hover:scale-105 transition-transform duration-700">
+    <p className="text-lg text-white leading-relaxed animate-textFadeIn">
+      Welcome to Proxima, where we take your resume to the next level! We’re here to provide you with analysis and recommendations that make a difference. Stand out with structured feedback, keyword insights, and personalized job matches!
+    </p>
+  </div>
+          <p className="text-lg text-gray-800 leading-relaxed animate-textPopUp">
+            Proxima does the work to showcase your unique strengths and career goals, from analyzing your resume layout and optimizing keywords to helping you discover the job roles best suited to your expertise. Let's pave the way to a stellar career, together!
           </p>
 
           {/* Load More Button */}
@@ -63,72 +67,81 @@ export default function Home() {
           </button>
         </section>
 
-        {/* Big Card Section */}
-        <section className="w-full max-w-xl p-6 mt-10 bg-white shadow-lg rounded-lg border border-gray-200 relative z-[1]">
-          <h4 className="text-xl font-bold mb-4">Your Content Here</h4>
-          <textarea
-            rows={5}
-            placeholder="Write anything you want..."
-            className="w-full p-4 border border-gray-300 rounded-lg resize-none"
-          />
-        </section>
+        {/* Wide Card Section */}
+        <section className="w-full max-w-4xl p-10 mt-16 bg-white shadow-2xl rounded-lg border border-gray-200 relative z-[1]">
+          <h4 className="text-3xl font-bold mb-6 text-purple-800">Discover More with Proxima</h4>
+          <p className="text-xl text-gray-700 mb-4 leading-relaxed">
+            Ready to enhance your professional journey? Proxima offers tailored tools, insights, and resources to help you build a resume that catches the eye of recruiters. Leverage Proxima's expertise to polish your presentation, streamline your job search, and achieve the career growth you've been aiming for.
+          </p>
+          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            With our user-friendly platform, you’ll receive real-time feedback, in-depth scoring, and customized job suggestions—all designed to make your job search smoother and more successful. Join a community that values your growth and puts your potential first.
+          </p>
 
-        {/* Scrolling Cards Section */}
-        <section className="relative w-full max-w-xl mt-10 overflow-hidden shadow-lg rounded-lg bg-white p-[20px] border border-gray-200 z-[1]">
-          {/* Container for scrolling cards */}
-          <div className="absolute inset-x-[0] top-[0] h-full overflow-hidden flex items-center animate-scrollCards">
-            {[...Array(10)].map((_, index) => (
-              <div key={index} className={`flex-shrink w-[100px] h-[100px] m-[10px] rounded-full bg-purple-${(index % 5) + 1} animate-moveCard`}></div>
-            ))}
-          </div>
-        </section>
+         {/* Scrolling Circles with Company Logos */}
+<div className="relative w-full h-24 overflow-hidden mt-6 animate-scrollCircles flex space-x-4">
+  {/* Add logos inside each circle */}
+  {["/google.png", "/amazon1.png", "/meta1.png", "/microsoft.png", 
+    "/apple.png", "/saudiaramco.png", "/nvidia.png", "/flipkart1.png", 
+    "/visa.png", "/tesla.png",
+   ].map((logo, index) => (
+    <div key={index} className="flex-shrink-0 w-20 h-20 rounded-full bg-purple-200 animate-scrollIcons overflow-hidden">
+      <img src={logo} alt={`Company Logo ${index + 1}`} className="w-full h-full object-cover" />
+    </div>
+  ))}
+</div>
 
+        </section>
       </main>
 
-      <footer className="w-full py-8 bg-purple-800/80 text-white mt-auto">
-  
-  {/* Navigation Links Box */}
-  <div className="flex justify-center mb-4">
-    <div className="bg-purple-700/80 p-4 rounded-lg shadow-lg">
-      <div className="flex justify-center space-x-8">
-        <Link href="/about" className="hover:text-purple-300">About</Link>
-        <Link href="/job" className="hover:text-purple-300">Job</Link>
-        <Link href="/feedback" className="hover:text-purple-300">Feedback</Link>
-      </div>
-    </div>
-  </div>
+      <footer className="w-full py-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white mt-auto"> 
+    {/* Navigation Links Box */} 
+    <div className="flex justify-center mb-4"> 
+        <div className="bg-purple-700/80 p-4 rounded-lg shadow-lg"> 
+            <div className="flex justify-center space-x-8"> 
+                {['About', 'Job', 'Feedback'].map((item, index) => (
+                    <div key={index} className="relative group">
+                        <Link href={`/${item.toLowerCase()}`} className="hover:text-purple-300 transition-colors duration-300">
+                            {item}
+                        </Link>
+                        {/* Underline effect */}
+                        <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                    </div>
+                ))}
+            </div> 
+        </div> 
+    </div> 
 
-  {/* Follow Us Text */}
-  <div className="text-center mt-4">
-    <p>Follow us on social media for updates!</p>
-  </div>
+        {/* Follow Us Text */}
+        <div className="text-center mt-4">
+          <p>Follow us on social media for updates!</p>
+        </div>
 
-  {/* Social Media Icons */}
-  <div className="flex justify-center space-x-6 mt-2">
-    <a href="#" target="_blank" rel="noopener noreferrer">
-      <img src="/facebook.png" alt="Facebook" className="w-8 h-8 hover:opacity-80" />
-    </a>
-    <a href="#" target="_blank" rel="noopener noreferrer">
-      <img src="/linkedin (1).png" alt="LinkedIn" className="w-8 h-8 hover:opacity-80" />
-    </a>
-    <a href="#" target="_blank" rel="noopener noreferrer">
-      <img src="/twitter.png" alt="Twitter" className="w-8 h-8 hover:opacity-80" />
-    </a>
-    <a href="#" target="_blank" rel="noopener noreferrer">
-      <img src="/instagram.png" alt="Instagram" className="w-8 h-8 hover:opacity-80" />
-    </a>
-  </div>
+        {/* Social Media Icons */}
+        <div className="flex justify-center space-x-6 mt-2">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="/facebook.png" alt="Facebook" className="w-8 h-8 hover:opacity-80" />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="/linkedin (1).png" alt="LinkedIn" className="w-8 h-8 hover:opacity-80" />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="/twitter.png" alt="Twitter" className="w-8 h-8 hover:opacity-80" />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="/instagram.png" alt="Instagram" className="w-8 h-8 hover:opacity-80" />
+          </a>
+        </div>
 
-  <hr className="border-t border-gray-400 my-4" />
-  
-  {/* Copyright Notice */}
-  <div className="text-center mt-4">
-    <p>© {new Date().getFullYear()} Proxima - All Rights Reserved</p>
-  </div>
-</footer>
+        <hr className="border-t border-gray-400 my-4" />
+
+        {/* Copyright Notice */}
+        <div className="text-center mt-4">
+          <p>© {new Date().getFullYear()} Proxima - All Rights Reserved</p>
+        </div>
+      </footer>
+
       {/* Styles */}
       <style jsx>{`
-        /* Purple Spots Background */
         .spot {
           position: absolute;
           border-radius: 50%;
@@ -136,7 +149,7 @@ export default function Home() {
           filter: blur(60px);
           transition: opacity 1.5s ease-in-out;
         }
-        
+
         .spot:nth-child(1) {
           width: 400px;
           height: 400px;
@@ -145,7 +158,7 @@ export default function Home() {
           left: 20%;
           animation: float 10s ease-in-out infinite;
         }
-        
+
         .spot:nth-child(2) {
           width: 300px;
           height: 300px;
@@ -154,7 +167,7 @@ export default function Home() {
           left: 70%;
           animation: float 12s ease-in-out infinite;
         }
-        
+
         .spot:nth-child(3) {
           width: 500px;
           height: 500px;
@@ -166,54 +179,77 @@ export default function Home() {
 
         /* Keyframe animations */
         @keyframes float {
-           0% { transform: translateY(0px); }
-           50% { transform: translateY(-20px) translateX(10px); }
-           100% { transform: translateY(0px); }
-         }
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-20px) translateX(10px); }
+          100% { transform: translateY(0px); }
+        }
 
-         .animate-fadeIn {
-           animation: fadeIn 1.2s ease-in-out forwards;
-         }
+        .animate-fadeIn {
+          animation: fadeIn 1.2s ease-in-out forwards;
+        }
 
-         .animate-slideUp {
-           animation: slideUp 1s ease-in-out forwards;
-         }
+        .animate-slideUp {
+          animation: slideUp 1.5s ease-in-out forwards;
+        }
 
-         .animate-bounce {
-           animation: bounce 1.5s infinite alternate;
-         }
+        .animate-bounce {
+          animation: bounce 1.5s ease-in-out infinite;
+        }
 
-         @keyframes fadeIn {
-           from { opacity: 0; }
-           to { opacity: 1; }
-         }
+        .animate-scrollIcons {
+          animation: scrollIcons 8s linear infinite;
+        }
 
-         @keyframes slideUp {
-           from { opacity: 0; transform: translateY(20px); }
-           to { opacity: 1; transform: translateY(0); }
-         }
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
 
-         @keyframes bounce {
-           from { transform: translateY(0); }
-           to { transform: translateY(-10px); }
-         }
+        @keyframes slideUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
 
-         /* Scrolling Cards Animation */
-         @keyframes scrollCards {
-           from { transform: translateX(100%); }
-           to { transform: translateX(-100%); }
-         }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
 
-         .animate-scrollCards {
-           animation: scrollCards linear infinite;
-           animation-duration: 20s; /* Adjust speed here */
-         }
+        @keyframes scrollIcons {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+        }
+          @keyframes boxFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
-         .animate-moveCard {
-           animation-duration: 10s; /* Adjust speed here */
-           background-color: #a78bfa; /* Example color */
-         }
-       `}</style>
+@keyframes textFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-boxFadeIn {
+  animation: boxFadeIn 1s ease-in-out forwards;
+}
+
+.animate-textFadeIn {
+  animation: textFadeIn 1.2s ease-in forwards;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.shadow-lg:hover {
+  box-shadow: 0 8px 16px rgba(118, 58, 220, 0.4);
+}
+
+.bg-gradient-to-br:hover {
+  background: linear-gradient(to bottom right, #7c3aed, #9d7fee);
+}
+
+      `}</style>
     </div>
   );
 }
