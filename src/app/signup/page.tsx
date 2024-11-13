@@ -1,17 +1,21 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSignup = (e) => {
+  const handleLogin = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log("Signing up with:", { email, password, confirmPassword });
+    // Handle login logic here
+    console.log("Logging in with:", { email, password });
   };
+
+    function handleSignup(event: FormEvent<HTMLFormElement>): void {
+        throw new Error("Function not implemented.");
+    }
 
   return (
     <div className="relative min-h-screen flex flex-col items-center bg-white font-sans overflow-hidden">

@@ -6,7 +6,7 @@ export default function About() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // Handle login logic here
     console.log("Logging in with:", { email, password });
