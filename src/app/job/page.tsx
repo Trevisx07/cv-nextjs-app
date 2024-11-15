@@ -12,31 +12,35 @@ export default function About() {
       </div>
 
       {/* Navbar */}
-      <nav className="w-full py-4 px-8 shadow-md flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 fixed top-0 z-50 transition-all duration-500">
-        <h1 className="text-2xl font-bold tracking-wide">Proxima</h1>
-        <ul className="flex gap-8 text-lg">
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/about">About</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/job">Job</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/feedback">Feedback</Link>
-          </li>
-        </ul>
-        <div className="flex gap-4">
-          <button className="text-white bg-purple-600 hover:bg-purple-500 transition-all px-4 py-2 rounded-lg">
-            <Link href="/login">Login</Link>
-          </button>
-          <button className="text-purple-800 bg-white hover:bg-purple-200 transition-all px-4 py-2 rounded-lg">
-            <Link href="/signup">Signup</Link>
-          </button>
-        </div>
-      </nav>
+      <nav className="w-full py-4 px-8 shadow-md flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 fixed top-0 z-50 transition-all duration-500 ">
+  <h1 className="text-2xl font-bold tracking-wide">Proxima</h1>
+  <ul className="flex gap-8 text-lg">
+    <li className="relative group hover:text-purple-300 transition-all duration-300">
+      <Link href="/">Home</Link>
+      <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+    </li>
+    <li className="relative group hover:text-purple-300 transition-all duration-300">
+      <Link href="/about">About</Link>
+      <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+    </li>
+    <li className="relative group hover:text-purple-300 transition-all duration-300">
+      <Link href="/job">Job</Link>
+      <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+    </li>
+    <li className="relative group hover:text-purple-300 transition-all duration-300">
+      <Link href="/feedback">Feedback</Link>
+      <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+    </li>
+  </ul>
+  <div className="flex gap-4">
+    <button className="text-white bg-purple-600 hover:bg-purple-500 transition-all px-4 py-2 rounded-lg">
+      <Link href="/login">Login</Link>
+    </button>
+    <button className="text-purple-800 bg-white hover:bg-purple-200 transition-all px-4 py-2 rounded-lg">
+      <Link href="/signup">Signup</Link>
+    </button>
+  </div>
+</nav>
 
 
       {/* Job Content */}

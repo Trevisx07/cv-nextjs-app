@@ -1,47 +1,53 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function Signup() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log("Logging in with:", { email, password });
-  };
+  const handleSignup = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    function handleSignup(event: FormEvent<HTMLFormElement>): void {
-        throw new Error("Function not implemented.");
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match");
+      return;
     }
+
+    // Reset the error message if passwords match
+    setErrorMessage("");
+
+    // After successful signup, redirect to login page
+    console.log("Signup successful:", { email, password });
+    router.push("/login");
+  };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center bg-white font-sans overflow-hidden">
       {/* Purple Gradient Spots Background */}
       <div className="absolute inset-0 -z-10 bg-white">
-        <div className="spot-1"></div>
-        <div className="spot-2"></div>
-        <div className="spot-3"></div>
+        <div className="spot spot-1"></div>
+        <div className="spot spot-2"></div>
+        <div className="spot spot-3"></div>
       </div>
 
       {/* Navbar */}
       <nav className="w-full py-4 px-8 shadow-md flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 fixed top-0 z-50 transition-all duration-500">
-        <h1 className="text-2xl font-bold tracking-wide">Proxima</h1>
-        <ul className="flex gap-8 text-lg">
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/about">About</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/job">Job</Link>
-          </li>
-          <li className="hover:text-purple-300 transition-all duration-300">
-            <Link href="/feedback">Feedback</Link>
-          </li>
+        <h1 className="text-2xl font-bold tracking-wide text-white">Proxima</h1>
+        <ul className="flex gap-8 text-lg text-white">
+          {["Home", "About", "Job", "Feedback"].map((item) => (
+            <li key={item} className="relative group">
+              <Link href={`/${item.toLowerCase()}`} className="hover:text-purple-300 transition-all duration-300">
+                {item}
+              </Link>
+              <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+            </li>
+          ))}
         </ul>
         <div className="flex gap-4">
           <button className="text-white bg-purple-600 hover:bg-purple-500 transition-all px-4 py-2 rounded-lg">
@@ -55,7 +61,9 @@ export default function Signup() {
 
       {/* Signup Card */}
       <main className="flex flex-col items-center justify-center text-center w-full px-8 py-16 mt-32 mb-24 gap-8 leading-relaxed">
-        <h2 className="text-4xl font-bold text-purple-800 mb-4 transition-transform transform hover:scale-[1.05] duration-300 ease-in-out">Signup</h2>
+        <h2 className="text-4xl font-bold text-purple-800 mb-4 transition-transform transform hover:scale-[1.05] duration-300 ease-in-out">
+          Signup
+        </h2>
 
         {/* Signup Form */}
         <form onSubmit={handleSignup} className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full transition-transform transform hover:scale-[1.02] duration-300 ease-in-out shadow-purple-500/50">
@@ -98,59 +106,36 @@ export default function Signup() {
             />
           </div>
 
+          {errorMessage && <p className="text-red-500 text-sm mb-4">{errorMessage}</p>}
+
           <button type="submit" className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out">
             Signup
           </button>
 
           <p className="mt-4 text-sm text-gray-600">
-            Already have an account?{' '}
-            <Link href="/login" className="text-purple-600 hover:text-purple-500 transition-all duration-300">Login</Link>
+            Already have an account?{" "}
+            <Link href="/login" className="text-purple-600 hover:text-purple-500 transition-all duration-300">
+              Login
+            </Link>
           </p>
         </form>
       </main>
 
-      <footer className="w-full py-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white mt-auto"> 
-    {/* Navigation Links Box */} 
-    <div className="flex justify-center mb-4"> 
-        <div className="bg-purple-700/80 p-4 rounded-lg shadow-lg"> 
-            <div className="flex justify-center space-x-8"> 
-                {['About', 'Job', 'Feedback'].map((item, index) => (
-                    <div key={index} className="relative group">
-                        <Link href={`/${item.toLowerCase()}`} className="hover:text-purple-300 transition-colors duration-300">
-                            {item}
-                        </Link>
-                        {/* Underline effect */}
-                        <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-                    </div>
-                ))}
-            </div> 
-        </div> 
-    </div> 
-
-        {/* Follow Us Text */}
-        <div className="text-center mt-4">
+      {/* Footer */}
+      <footer className="w-full py-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white mt-auto">
+        <div className="text-center">
           <p>Follow us on social media for updates!</p>
-        </div>
-
-        {/* Social Media Icons */}
-        <div className="flex justify-center space-x-6 mt-2">
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/facebook.png" alt="Facebook" className="w-8 h-8 hover:opacity-80" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/linkedin (1).png" alt="LinkedIn" className="w-8 h-8 hover:opacity-80" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/twitter.png" alt="Twitter" className="w-8 h-8 hover:opacity-80" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/instagram.png" alt="Instagram" className="w-8 h-8 hover:opacity-80" />
-          </a>
+          <div className="flex justify-center space-x-6 mt-2">
+            {["facebook", "linkedin", "twitter", "instagram"].map((platform) => (
+              <a href="#" key={platform} target="_blank" rel="noopener noreferrer">
+                <img src={`/${platform}.png`} alt={platform} className="w-8 h-8 hover:opacity-80" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <hr className="border-t border-gray-400 my-4" />
 
-        {/* Copyright Notice */}
         <div className="text-center mt-4">
           <p>© {new Date().getFullYear()} Proxima - All Rights Reserved</p>
         </div>
@@ -163,29 +148,29 @@ export default function Signup() {
           border-radius: 50%;
           opacity: 0.5;
         }
-        
-        .spot:nth-child(1) {
+        .spot-1 {
           width: 200px;
           height: 200px;
-          background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(128,0,128,1) 100%);
-          top: 20%;
+          top: 5%;
           left: 10%;
+          background-color: rgba(175, 0, 255, 0.2);
+          filter: blur(75px);
         }
-
-        .spot:nth-child(2) {
-          width: 150px;
-          height: 150px;
-          background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(128,0,128,1) 100%);
-          top: 60%;
+        .spot-2 {
+          width: 300px;
+          height: 300px;
+          top: 20%;
           right: 15%;
+          background-color: rgba(0, 100, 255, 0.2);
+          filter: blur(100px);
         }
-
-        .spot:nth-child(3) {
-          width: 180px;
-          height: 180px;
-          background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(128,0,128,1) 100%);
-          bottom: 30%;
-          left: 40%;
+        .spot-3 {
+          width: 250px;
+          height: 250px;
+          bottom: 15%;
+          left: 25%;
+          background-color: rgba(255, 0, 150, 0.2);
+          filter: blur(75px);
         }
       `}</style>
     </div>

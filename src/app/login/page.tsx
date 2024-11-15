@@ -1,16 +1,20 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function About() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Login() {
+    const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log("Logging in with:", { email, password });
-  };
+    const handleLogin = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+        // Simulating a successful login action, directly redirect to dashboard
+        router.push("/dashboard");  // Redirect to dashboard page
+    };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center bg-white font-sans overflow-hidden">
@@ -105,6 +109,7 @@ export default function About() {
                         <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-white scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
                     </div>
                 ))}
+
             </div> 
         </div> 
     </div> 
